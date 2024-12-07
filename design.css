@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Danfo&family=Lacquer&family=Michroma&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rock+Salt&family=Rubik+Wet+Paint&family=Ultra&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: radial-gradient(#b308b6, #2F144C);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.box {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    background-color: #2F144C;
+    color: #eee;
+    padding: 20px 40px;
+    font-family: 'Poppins', sans-serif;
+    width: 600px;
+    animation: floatBox 5s ease-in-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+span {
+    color: #8721ea;
+}
+
+@keyframes floatBox {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1.8rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.box input[name="readmore"] {
+    display: none;
+}
+
+.box h1 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.box .des {
+    /*text-align: justify;*/
+    font-size: 10px;
+    position: relative;
+    overflow: hidden;
+    max-height: 150px;
+    transition: 0.5s ease-in-out;
+}
+
+.box .des::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    transition: 0.5s ease-in-out;
+    content: '';
+    background-image: linear-gradient(to top, #2F144C, transparent);
+}
+
+.des p {
+    font-size: 10px;
+    padding: 3px;
+}
+
+.box .button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.box label {
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #8721ea;
+    width: 140px;
+    height: 50px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.box label:hover {
+    background-color: #b308b6;
+}
+
+.box label::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: attr(data-more);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box input[name="readmore"]:checked ~ .content label::before {
+    content: attr(data-less); 
+}
+
+.box input[name="readmore"]:checked ~ .content .des {
+    max-height: 300px;
+}
+
+.box input[name="readmore"]:checked ~ .content .des::before {
+    height: 0px;
+}
+
+.content {
+    position: relative;
+}
+
+.content::before {
+    position: absolute;
+    bottom: 50px;
+    right: 5px;
+    width: 50px;
+    height: 70px;
+    content: "";
+    background-image: url();
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: 2s ease-in-out;
+}
+
+.content::after {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    transform: translate(70%, 50%);
+    width: 200px;
+    height: 150px;
+    content: "";
+    background-image: url();
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: 2s ease-in-out;
+}
+
+.box input[name="readmore"]:checked ~ .content::before {
+    bottom: 80%;
+    right: 100%;
+    transform:  translate(75%, 55%) rotate(30deg);
+}
